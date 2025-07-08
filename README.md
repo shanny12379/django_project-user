@@ -138,7 +138,7 @@ Tests cover models and views to ensure correctness and stability.
 
 ### Contact
 
-- Email: [zablonombiri001@gmail.com](mailto:zablonombiri001@gmail.com)
-- GitHub: [https://github.com/Zambagarrah](https://github.com/Zambagarrah)
+- Email: [marvinbernard2018@gmail.com](mailto:marvinbernard2018@gmail.com)
+- GitHub: [https://github.com/Mavoochie/Marvin](https://github.com/Mavoochie/Marvin)
 
 Feel free to reach out for collaborations, freelance projects, or tech discussions!
