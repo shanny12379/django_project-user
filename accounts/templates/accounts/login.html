@@ -1,33 +1,57 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Login{% endblock title %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="row justify-content-center align-items-center min-vh-100" style="background: none;">
   <div class="col-md-6">
-    <div class="custom-card">
+    <div class="custom-card shadow-lg rounded-4 p-4" style="background: rgba(255,255,255,0.97); border: 1.5px solid #e0eaff;">
       <div class="text-center mb-4">
-        <h2 class="text-success">🔐 Log In</h2>
+        <!-- Futuristic lock SVG icon -->
+        <div class="mb-2">
+          <svg width="44" height="44" fill="none" viewBox="0 0 24 24">
+            <rect x="4" y="10" width="16" height="10" rx="4" fill="#e3f0ff"/>
+            <path d="M8 10V8a4 4 0 1 1 8 0v2" stroke="#1976d2" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="15" r="1.5" fill="#1976d2"/>
+          </svg>
+        </div>
+        <h2 class="fw-bold" style="color: #1976d2;">Log In</h2>
         <p class="text-muted">Access your account securely</p>
       </div>
       <form method="POST">
         {% csrf_token %}
         {% for field in form %}
           <div class="mb-3">
-            <label class="form-label">{{ field.label }}</label>
+            <label class="form-label fw-semibold" style="color: #1976d2;">{{ field.label }}</label>
             {{ field }}
             {% if field.errors %}
-              <div class="text-danger">{{ field.errors }}</div>
+              <div class="text-danger small">{{ field.errors }}</div>
             {% endif %}
           </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <button type="submit" class="btn w-100 py-2 fw-bold" style="background: linear-gradient(90deg, #1976d2 60%, #21a1ff 100%); color: #fff; border: none; border-radius: 2rem; box-shadow: 0 2px 8px #1976d220;">Login</button>
       </form>
       <div class="mt-3 text-center">
         <p><a href="./change_password.html" class="link-danger">Forgot password?</a></p>
-        <p class="text-muted">New here? <a href="{% url 'register' %}" class="link-primary">Create an account</a></p>
+        <p class="text-muted">New here? <a href="{% url 'register' %}" class="link-primary fw-semibold" style="color: #1976d2;">Create an account</a></p>
       </div>
     </div>
   </div>
 </div>
 {% endblock %}
+.futuristic-input {
+  background: #f7fbff;
+  border: 1.5px solid #b3d1f7;
+  border-radius: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #1976d2;
+  font-weight: 500;
+}
+.futuristic-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #1976d233;
+  background: #e3f0ff;
+  color: #1976d2;
+}
+</style>
+

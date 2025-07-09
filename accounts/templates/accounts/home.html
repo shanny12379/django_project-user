@@ -3,14 +3,107 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #ffffff 70%, #3a8dde 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  }
+  .custom-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(58,141,222,0.15), 0 1.5px 8px rgba(0,0,0,0.05);
+    padding: 48px 32px;
+    max-width: 500px;
+    margin: 80px auto 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .custom-card h2 {
+    color: #3a8dde;
+    font-weight: 700;
+    text-shadow: 0 2px 12px #e3f0fc;
+    margin-bottom: 16px;
+  }
+  .custom-card p {
+    color: #444;
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+  }
+  .d-grid .btn {
+    border-radius: 32px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 0;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 16px rgba(58,141,222,0.10);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, #3a8dde 60%, #6ec6ff 100%);
+    border: none;
+  }
+  .btn-success {
+    background: linear-gradient(90deg, #00c6a7 60%, #3a8dde 100%);
+    border: none;
+  }
+  .btn-info {
+    background: linear-gradient(90deg, #6ec6ff 60%, #3a8dde 100%);
+    border: none;
+  }
+  .btn-warning {
+    background: linear-gradient(90deg, #ffb347 60%, #3a8dde 100%);
+    border: none;
+    color: #fff !important;
+  }
+  .d-grid .btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    filter: brightness(1.08);
+  }
+  /* Futuristic shapes */
+  .futuristic-shape {
+    position: fixed;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .shape1 {
+    width: 320px; height: 320px;
+    background: #3a8dde;
+    top: -80px; left: -100px;
+  }
+  .shape2 {
+    width: 180px; height: 180px;
+    background: #6ec6ff;
+    bottom: -60px; right: -60px;
+  }
+  @media (max-width: 600px) {
+    .custom-card { padding: 24px 8px; }
+    .custom-card h2 { font-size: 1.3rem; }
+  }
+</style>
+<div class="futuristic-shape shape1"></div>
+<div class="futuristic-shape shape2"></div>
 <div class="custom-card text-center">
   <h2>Welcome to the User Management System</h2>
   <p class="mb-4">Navigate to different sections below</p>
+  <p class="text-muted mb-4">Choose an option to get started</p>
+  
+  {% if user.is_authenticated %}
+    <p class="text-success">Hello, {{ user.username }}! You are logged in.</p>
+  {% else %}
+    <p class="text-danger">You are not logged in. Please register or login.</p>
+  {% endif %}
   <div class="d-grid gap-2 col-6 mx-auto">
+    {% if user.is_authenticated %}
+      <a href="{% url 'profile' %}" class="btn btn-info">View Profile</a>
+      <a href="/admin/" class="btn btn-warning">Admin Panel</a>
+    {% else %}
     <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
     <a href="{% url 'login' %}" class="btn btn-success">Login</a>
-    <a href="{% url 'profile' %}" class="btn btn-info">View Profile</a>
-    <a href="/admin/" class="btn btn-warning">Admin Panel</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
