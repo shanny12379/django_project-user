@@ -51,8 +51,8 @@ user_management/
 ### Installation & Setup 
 1. Clone the repository
 ```
-git clone https://github.com/Zambagarrah/Django-User-Management-System.git
-cd Django-User-Management-System
+git clone https://github.com/shanny12379/django_project-user.git
+cd django_project-user.git
 ```
 
 2. Create virtual environment & install requirements
